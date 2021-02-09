@@ -38,4 +38,9 @@ urlpatterns += [
 from django.conf import settings
 from django.conf.urls.static import static
 
+<<<<<<< HEAD
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+=======
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+###
+>>>>>>> ca178886b213f308215e590cd617895b25961f4e
