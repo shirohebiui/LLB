@@ -26,12 +26,19 @@ def index(request):
     #참고자료 http://pythonstudy.xyz/python/article/310-Django-%EB%AA%A8%EB%8D%B8-API
     #참고자료 https://fabl1106.github.io/django/2019/05/14/Django-21.-%EC%9E%A5%EA%B3%A0-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%84%9C%EC%B9%AD-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84.html
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
         'num_include_BOOK': num_include_BOOK,
+        'num_visits' : num_visits,
     }
 
     
@@ -65,3 +72,5 @@ class BookListView(generic.ListView):
 # 3. 새롭게 업데이트된 컨텍스트 리턴
 #-----------------------------------------------------#
 
+class BookDetailView(generic.DetailView):
+    model = Book
